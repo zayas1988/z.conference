@@ -1,8 +1,17 @@
 source 'https://rubygems.org'
 
+gem 'pg'
+gem 'thin'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'bootstrap-sass'
+gem 'bcrypt-ruby'
+gem 'slim'
+gem 'unicorn'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+#gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -38,3 +47,4 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#gem "net-ldap", :git => "git://github.com/ruby-ldap/ruby-net-ldap.git", :branch => "master"
