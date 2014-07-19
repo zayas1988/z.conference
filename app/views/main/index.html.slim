@@ -1,0 +1,9 @@
+- provide(:title, 'conference manager')
+
+- @users.each do |user|
+  select name="#{user.name} calling number "
+          option value="null" data-ip="null"
+            ="не вызывать"
+          - user.numbers.each do |number|
+            option value=number.num data-ip=number.num
+             ="#{number.num}"
