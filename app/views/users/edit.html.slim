@@ -1,0 +1,14 @@
+.row
+ .span6.offset3
+     =form_for @user do |f|
+        ul 
+       
+           = f.fields_for :numbers do |num_form|
+              li
+                 =num_form.label :name
+                 =num_form.text_field :num
+              li
+                 =num_form.label "active"
+                 =num_form.check_box :active
+           = f.submit "Обновить госпадина"
+// - @user.numbers.build

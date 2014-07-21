@@ -4,7 +4,10 @@ class MainController < ApplicationController
   def index
     @users= User.all
     @numbers= Number.all
-    @conference = Array.new
+    #@conference = Array.new
+    @user = User.new
+    @number = Number.new
+    2.times { @user.numbers.build}
   end
   def makeconf
   	@users.ea

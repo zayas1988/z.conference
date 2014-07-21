@@ -1,9 +1,16 @@
 - provide(:title, 'conference manager')
-
-- @users.each do |user|
-  select name="#{user.name} calling number "
-          option value="null" data-ip="null"
-            ="не вызывать"
-          - user.numbers.each do |number|
-            option value=number.num data-ip=number.num
-             ="#{number.num}"
+.row
+ .span3.offset3
+    - User.all.each do |user|
+      =form_for user do |f|
+        li 
+           =f.text_field :name
+           - user.numbers.build
+           = f.fields_for :numbers do |num_form|
+              ul
+                =num_form.text_field :num
+              ul
+                =num_form.label "active"
+                =num_form.check_box :active
+        li
+           = f.submit "Обновить господина"
