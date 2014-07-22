@@ -8,6 +8,7 @@ class MainController < ApplicationController
     @user = User.new
     @number = Number.new
     2.times { @user.numbers.build}
+    @meet = Meet.first
   end
   def makeconf
   	@users.ea

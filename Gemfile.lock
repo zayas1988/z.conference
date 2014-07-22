@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/bootstrap-ruby/rails-bootstrap-forms.git
+  revision: 29e89061e49e3435f0dcb2e6455374713685d707
+  specs:
+    bootstrap_form (2.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -143,6 +149,7 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass
   bootstrap-will_paginate
+  bootstrap_form!
   coffee-rails
   faker
   jbuilder (~> 2.0)

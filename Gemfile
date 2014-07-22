@@ -9,6 +9,7 @@ gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'slim'
 gem 'unicorn'
+gem 'bootstrap_form', :github => "bootstrap-ruby/rails-bootstrap-forms"
 #gem 'rails', '~> 4.0.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 #gem 'rails', '4.1.4'

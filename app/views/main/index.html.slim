@@ -1,16 +1,49 @@
-- provide(:title, 'conference manager')
-.row
- .span3.offset3
-    - User.all.each do |user|
-      =form_for user do |f|
-        li 
-           =f.text_field :name
-           - user.numbers.build
-           = f.fields_for :numbers do |num_form|
-              ul
-                =num_form.text_field :num
-              ul
-                =num_form.label "active"
-                =num_form.check_box :active
-        li
-           = f.submit "Обновить господина"
+.container
+  .row
+    .col-lg-12
+      h3  Господа
+  .row
+    .col-lg-12
+      table.table.table-striped
+        thead
+          tr
+            th.col-md-1
+              = link_to new_user_path do
+                span.glyphicon.glyphicon-plus.margin-left-7px
+            th  Фио
+            th
+              = link_to new_number_path do
+                span.glyphicon.glyphicon-plus.margin-left-7px
+              |  Номера
+            th.col-md-1  &nbsp;
+        tbody
+          - @users.each_with_index do |user, index|
+            tr
+              td
+                span.margin-left-7px  = index + 1
+              td  = user.name
+              td
+                - user.numbers.each do |number| 
+                  - if number.num.length > 4
+                    span.glyphicon.glyphicon-phone.margin-left-7px
+                  - else
+                    span.glyphicon.glyphicon-phone-alt.margin-left-7px
+                  span.margin-left-7px  = number.num
+                  = link_to edit_number_path(number) do
+                    span.glyphicon.glyphicon-pencil.margin-left-7px
+                    - if number.active?
+                      span.glyphicon.glyphicon-ok.margin-left-7px
+
+                  
+                  
+              td
+                = link_to edit_user_path(user) do
+                  span.glyphicon.glyphicon-pencil.margin-left-7px
+                = link_to user_path(user), :method => :delete, :class => :confirm_delete do
+                  span.glyphicon.glyphicon-remove.margin-left-7px
+  .row
+    .col-lg-12
+      h3  Созвать
+         = bootstrap_form_for ( @post_meet , url: meet_path, method: :get)  do |f|
+          = f.check_box :ok
+          = f.submit "Всех господ на мегапати!"
