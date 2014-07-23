@@ -7,8 +7,9 @@ namespace :calls do
     @calls.each do |call|
       call.destroy
     end
+    rawdata = Array.new
     rawdata =  %x(/bin/meetmestat)
-    rawdata.each do |data|
+    rawdata.split("\n").each do |data|
       Call.create(raw: data)
     end
   end
