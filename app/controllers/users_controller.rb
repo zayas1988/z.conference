@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     #user.numbers.build
   end
   def call
+    User.find(params[:id]).call
     redirect_to root_path
   end
 
