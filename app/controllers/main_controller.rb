@@ -4,6 +4,7 @@ class MainController < ApplicationController
   def index
     @users= User.all
     @numbers= Number.all
+    @calls = Call.all
     #@conference = Array.new
     @user = User.new
     @number = Number.new

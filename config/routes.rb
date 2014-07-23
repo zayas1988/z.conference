@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   root to: 'main#index'
   get 'users/new'
   resources :users
+  resources :calls
+  resources :calls do
+    member do
+      post :drop
+      get :drop
+    end
+  end
   resources :numbers
   resources :numbers do
     member do

@@ -50,8 +50,7 @@
               td    
                 = link_to call_user_path(user) do
                     span.glyphicon.glyphicon-earphone.margin-left-7px style="color: green"
-                = link_to call_user_path(user) do
-                    span.glyphicon.glyphicon-earphone.margin-left-7px style="color: red; transform: rotate(180deg)"  
+                
 
               td
                 = link_to edit_user_path(user) do
@@ -63,3 +62,25 @@
       h3  Созвать
       = bootstrap_form_for @meet do |f|
           = f.submit "Всех господ на мегапати!"
+  .row
+    .col-lg-12
+      h3  Господа, которые уже на мегапати
+  .row
+    .col-lg-12
+      table.table.table-striped
+        thead
+          tr
+            th 
+            th Линия
+            th Операция
+        tbody
+          - @calls.each_with_index do |call, index|
+            tr
+              td
+                span.margin-left-7px  = index + 1
+              td  
+                = call.raw
+              td    
+                = link_to drop_call_path(call) do
+                    span.glyphicon.glyphicon-earphone.margin-left-7px style="color: red; transform: rotate(180deg)"  
+
