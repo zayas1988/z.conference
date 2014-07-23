@@ -28,8 +28,10 @@ class UsersController < ApplicationController
     #user.numbers.build
   end
   def call
-    User.find(params[:id]).call
+    @user = User.find(params[:id])
+    @user.call
     redirect_to root_path
+    flash[:success] = "Госпадину #{@user.name} совершен вызов"
   end
 
   private
