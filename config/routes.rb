@@ -5,6 +5,19 @@ Rails.application.routes.draw do
   get 'users/new'
   resources :users
   resources :numbers
+  resources :numbers do
+    member do
+      post :setactive
+      get :setactive
+    end
+  end
+  resources :users do
+    member do
+      post :call
+      get :call
+    end
+  end
+  resources :meet
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

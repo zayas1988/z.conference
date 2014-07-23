@@ -28,6 +28,27 @@ class NumbersController < ApplicationController
         render :action => :edit
       end
   end
+  def setactive
+    @number = Number.find(params[:id])
+    @numbers = Number.all
+    @numbers.each do |number|
+      if number.user_id == @number.user_id then
+        @num = Number.find_by_id(number.id)
+        if number.id == @number.id then
+          if @number.active == true then
+            @num.update_attribute("active", false)
+          else
+            @num.update_attribute("active", true)
+          end
+          
+        else
+          @num.update_attribute("active", false)
+          
+        end
+      end
+    end
+    redirect_to root_path()
+  end
 
   private
   def number_params

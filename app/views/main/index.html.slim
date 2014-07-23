@@ -15,27 +15,44 @@
               = link_to new_number_path do
                 span.glyphicon.glyphicon-plus.margin-left-7px
               |  Номера
+            th  Управление звонком
+
             th.col-md-1  &nbsp;
         tbody
           - @users.each_with_index do |user, index|
             tr
               td
                 span.margin-left-7px  = index + 1
-              td  = user.name
+              td  
+                = user.name
+                
+
               td
-                - user.numbers.each do |number| 
+                - user.numbers.order("id DESC").each do |number| 
                   - if number.num.length > 4
                     span.glyphicon.glyphicon-phone.margin-left-7px
                   - else
                     span.glyphicon.glyphicon-phone-alt.margin-left-7px
-                  span.margin-left-7px  = number.num
+                  = link_to setactive_number_path(number)
+                    span.margin-left-7px  = number.num
+                  = "   |   "
                   = link_to edit_number_path(number) do
                     span.glyphicon.glyphicon-pencil.margin-left-7px
-                    - if number.active?
-                      span.glyphicon.glyphicon-ok.margin-left-7px
+                  - if number.active?
+                    span.glyphicon.glyphicon-ok.margin-left-7px style="color: green"
+                  
+                  //= link_to call_number_path(number) do
+                  //  span.glyphicon.glyphicon-forward.margin-right-77px
 
-                  
-                  
+                  br
+                    
+
+              td    
+                = link_to call_user_path(user) do
+                    span.glyphicon.glyphicon-earphone.margin-left-7px style="color: green"
+                = link_to call_user_path(user) do
+                    span.glyphicon.glyphicon-earphone.margin-left-7px style="color: red; transform: rotate(180deg)"  
+
               td
                 = link_to edit_user_path(user) do
                   span.glyphicon.glyphicon-pencil.margin-left-7px
@@ -44,6 +61,5 @@
   .row
     .col-lg-12
       h3  Созвать
-         = bootstrap_form_for ( @post_meet , url: meet_path, method: :get)  do |f|
-          = f.check_box :ok
+      = bootstrap_form_for @meet do |f|
           = f.submit "Всех господ на мегапати!"

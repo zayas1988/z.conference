@@ -9,5 +9,4 @@
       = bootstrap_form_for @number do |f|
         = f.collection_select :user_id, @users, :id, :name
         = f.text_field :num
-        = f.check_box :active
         = f.submit "Создать"

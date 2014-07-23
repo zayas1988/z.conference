@@ -22,12 +22,14 @@ class UsersController < ApplicationController
      #render :action => :edit
       redirect_to root_path
     end
-end
-def edit
-   @user = User.find(params[:id])
-   #user.numbers.build
-end
-
+  end
+  def edit
+    @user = User.find(params[:id])
+    #user.numbers.build
+  end
+  def call
+    redirect_to root_path
+  end
 
   private
   def user_params
