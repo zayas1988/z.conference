@@ -1,6 +1,9 @@
 class CallsController < ApplicationController
 	def drop
-		Call.find(params[:id]).drop
+		@call = Call.find(params[:id])
+		@call.drop
         redirect_to root_path
+        flash[:success] = "Вызов прекращен #{call.raw}"
+        @call.destroy
 	end
 end
