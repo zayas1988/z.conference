@@ -38,6 +38,8 @@
                   = "   |   "
                   = link_to edit_number_path(number) do
                     span.glyphicon.glyphicon-pencil.margin-left-7px
+                  = link_to number_path(number), :method => :delete, :class => :confirm_delete do
+                    span.glyphicon.glyphicon-remove.margin-left-7p
                   - if number.active?
                     span.glyphicon.glyphicon-ok.margin-left-7px style="color: green"
                   

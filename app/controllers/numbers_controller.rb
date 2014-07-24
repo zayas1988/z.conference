@@ -18,6 +18,15 @@ class NumbersController < ApplicationController
    @users = User.all
    #user.numbers.build
   end
+  def destroy
+     @users = User.all
+     @number = Number.find(params[:id])
+     @number.destroy
+     flash[:success] = "�^�оме�^� го�^�падина обновлен"
+     redirect_to root_path()
+     
+  end
+
   def update
      @users = User.all
      @number = Number.find(params[:id])
