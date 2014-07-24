@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     redirect_to root_path
     flash[:success] = "Госпадину #{@user.name} совершен вызов"
   end
+  def destroy
+     #@users = User.all
+     @user = User.find(params[:id])
+     @user.destroy
+     flash[:success] = "Госпадин удален"
+     redirect_to root_path()
+     
+  end
+
 
   private
   def user_params

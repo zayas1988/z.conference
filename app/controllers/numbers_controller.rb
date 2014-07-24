@@ -22,7 +22,7 @@ class NumbersController < ApplicationController
      @users = User.all
      @number = Number.find(params[:id])
      @number.destroy
-     flash[:success] = "�^�оме�^� го�^�падина обновлен"
+     flash[:success] = "номер госпадина удален"
      redirect_to root_path()
      
   end
