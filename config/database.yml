@@ -62,9 +62,9 @@ production:
 development:
   adapter: postgresql
   encoding: utf8
-  database: z.conference_development
+  database: z.conferenceauto_development
   pool: 5
-  username: z.conference
+  username: z.conferenceauto
   password: 123123
 
   # Connect on a TCP socket. Omitted by default since the client uses a
