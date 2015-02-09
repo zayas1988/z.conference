@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'conferences/new'
+
+  get 'accounts/new'
+
  # get 'main/new'
   
   root to: 'main#index'
