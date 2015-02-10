@@ -1,0 +1,16 @@
+title= "New server"
+h1 New server
+.row
+    .span6.offset3
+      = form_for(@account) do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.label :email
+        = f.text_field :email
+        = f.label :name
+        = f.text_field :name
+        - for conference in Conference.find(:all)
+            = check_box_tag "account[conference_ids][]", conference.id, @account.conferences.include?(conference)
+            = conference.name
+            = f.label " "
+        = f.submit "Add new Account", class: "btn btn-large btn-primary"
+
