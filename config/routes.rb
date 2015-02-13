@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'users/new'
   resources :users
   resources :calls
+  resources :accounts
+  resources :conferences
   resources :calls do
     member do
       post :drop

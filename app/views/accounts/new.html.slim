@@ -1,5 +1,8 @@
 title= "New account"
 h1 New account
+=======
+title= "New server"
+h1 New server
 .row
     .span6.offset3
       = form_for(@account) do |f|
@@ -13,3 +16,14 @@ h1 New account
             = conference.name
             = f.label " "
         = f.submit "Add new account", class: "btn btn-large btn-primary"
+=======
+        = f.label :email
+        = f.text_field :email
+        = f.label :name
+        = f.text_field :name
+        - for conference in Conference.find(:all)
+            = check_box_tag "account[conference_ids][]", conference.id, @account.conferences.include?(conference)
+            = conference.name
+            = f.label " "
+        = f.submit "Add new Account", class: "btn btn-large btn-primary"
+
