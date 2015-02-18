@@ -17,9 +17,9 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: z.conference_dev
+  database: zconf
   pool: 5
-  username: z.conference
+  username: zconf
   password: 123123
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -62,12 +62,12 @@ production:
 development:
   adapter: postgresql
   encoding: utf8
-  database: z.conferenceauto_development
+  database: zconf
   pool: 5
-  username: z.conferenceauto
-  password: 123123
+  username: postgres
+  password: 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  host: db.polad.ru
+  host: localhost

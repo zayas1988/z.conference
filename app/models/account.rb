@@ -3,4 +3,5 @@ class Account < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true
   has_and_belongs_to_many :conferences
+  accepts_nested_attributes_for :conferences
 end

@@ -14,10 +14,23 @@ class AccountsController < ApplicationController
   def edit
    	@account = Account.find(params[:id])
   end
+  def index
+    @accounts = Account.all
+#    @users= User.all
+#    @numbers= Number.all
+#    @calls = Call.all
+    #@conference = Array.new
+#    @user = User.new
+#    @number = Number.new
+#    2.times { @user.numbers.build}
+#    @meet = Meet.first
+  end
+
   def update
   	@account = Account.find(params[:id])
     
-    if @account.update_attributes(params[:account])
+    if @account.update_attributes(account_params)
+      #(params[:account])
     #  if @dhcpserver.lock = true
     #    @tftps = Tftp.all
     #    @dhcpserver.generate_config
@@ -27,7 +40,7 @@ class AccountsController < ApplicationController
     #  else
       
         flash[:success] = "Account updated"
-        redirect_to main_path
+        redirect_to accounts_path
     #  end
     else
       render :action => :edit
@@ -40,8 +53,8 @@ class AccountsController < ApplicationController
   end
 
   private
-  def accounts_params
-  	params.require(:account).permit(:name,:email,:account_id, :active)
+  def account_params
+  	params.require(:account).permit(:name,:email, conferences_attributes: [:id, :num, :account_id])
   end
   
 
