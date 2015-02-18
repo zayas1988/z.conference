@@ -1,5 +1,5 @@
 class Conference < ActiveRecord::Base
-  #attr_accessible :name
-  validates :name, presence: true
+#  attr_accessible :num
+  validates :num, presence: true
   has_and_belongs_to_many :accounts
 end
