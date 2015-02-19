@@ -54,7 +54,7 @@ class AccountsController < ApplicationController
 
   private
   def account_params
-  	params.require(:account).permit(:name,:email, conferences_attributes: [:id, :num, :account_id])
+  	params.require(:account).permit(:name,:email, conference_ids: [], conferences_attributes: [:account_id])
   end
   
 

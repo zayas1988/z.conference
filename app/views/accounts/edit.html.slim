@@ -9,9 +9,6 @@
       = bootstrap_form_for @account do |f|
         = f.text_field :name
         = f.text_field :email
-        - for conference in Conference.take(999)
-            = check_box_tag "account[conference_ids][]", conference.id, @account.conferences.include?(conference)
-            = conference.num
-            = f.label " "
+        = collection_check_boxes(:account, :conference_ids, Conference.all, :id, :num)
         = f.submit "Изменить"
 
