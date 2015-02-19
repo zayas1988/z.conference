@@ -3,10 +3,10 @@ class AccountsController < ApplicationController
   @account = Account.new
   end
   def create
-  	@account = Account.new(params[:account])
+  	@account = Account.new(account_params)
   	if @account.save
   	  flash[:success] = "Account added"
-  	  redirect_to main_path
+  	  redirect_to root_path
   	else
   		 render :adction => :new
     end
@@ -49,7 +49,7 @@ class AccountsController < ApplicationController
   def destroy
   	Account.find(params[:id]).destroy
   	flash[:success] = "Account deleted"
-  	redirect_to main_path
+  	redirect_to root_path
   end
 
   private

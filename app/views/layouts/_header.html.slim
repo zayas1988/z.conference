@@ -4,7 +4,7 @@ header.navbar.navbar-fixed-top.navbar-inverse
       = link_to "z.conference", root_path, id: "logo"
       nav
         ul class="nav pull-right"
+        		li
+                  = link_to "Acccouts", accounts_path
                 li
-                  = link_to "New Acccout", new_account_path
-                li
-                  = link_to "New Conference", new_conference_path
+                  = link_to "Conferences", conferences_path

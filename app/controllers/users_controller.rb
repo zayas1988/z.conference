@@ -29,8 +29,9 @@ class UsersController < ApplicationController
   end
   def call
     @user = User.find(params[:id])
-    @user.call
-    redirect_to root_path
+    @conference = Conference.find(params[:conference_id])
+    @user.call(@conference)
+    redirect_to conf_conference_path(@conference)
     flash[:success] = "Госпадину #{@user.name} совершен вызов"
   end
   def destroy
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit( :name, numbers_attributes: [:id, :user_id, :num, :active])
+  	params.require(:user).permit( :name, numbers_attributes: [:id, :user_id, :num, :active], conferences_ids: [])
   end
 
 end

@@ -1,0 +1,85 @@
+.container
+  .row
+    .col-lg-12
+      h3  Конфа #{@conference.num}
+  .row
+    .col-lg-12
+      table.table.table-striped
+        thead
+          tr
+            th.col-md-1
+              = link_to new_user_path do
+                span.glyphicon.glyphicon-plus.margin-left-7px
+            th  Фио
+            th
+              = link_to new_number_path do
+                span.glyphicon.glyphicon-plus.margin-left-7px
+              |  Номера
+            th  Управление звонком
+
+            th.col-md-1  &nbsp;
+        tbody
+          - @users.each_with_index do |user, index|
+            tr
+              td
+                span.margin-left-7px  = index + 1
+              td  
+                = user.name
+                
+
+              td
+                - user.numbers.order("id DESC").each do |number| 
+                  - if number.num.length > 4
+                    span.glyphicon.glyphicon-phone.margin-left-7px
+                  - else
+                    span.glyphicon.glyphicon-phone-alt.margin-left-7px
+                  = link_to setactive_number_path(number)
+                    span.margin-left-7px  = number.num
+                  = "   |   "
+                  = link_to edit_number_path(number) do
+                    span.glyphicon.glyphicon-pencil.margin-left-7px
+                  = link_to number_path(number), :method => :delete, :class => :confirm_delete do
+                    span.glyphicon.glyphicon-remove.margin-left-7p
+                  - if number.active?
+                    span.glyphicon.glyphicon-ok.margin-left-7px style="color: green"
+                  
+                  //= link_to call_number_path(number) do
+                  //  span.glyphicon.glyphicon-forward.margin-right-77px
+
+                  br
+                    
+
+              td    
+                = link_to call_conference_user_path(@conference,user) do
+                    span.glyphicon.glyphicon-earphone.margin-left-7px style="color: green"
+                
+
+              td
+                = link_to edit_user_path(user) do
+                  span.glyphicon.glyphicon-pencil.margin-left-7px
+                = link_to user_path(user), :method => :delete, :class => :confirm_delete do
+                  span.glyphicon.glyphicon-remove.margin-left-7px
+  row
+    .col-lg-12
+      h3  Господа, которых уже вызвали
+      = link_to root_path
+        h5 Обновить
+  .row
+    .col-lg-12
+      table.table.table-striped
+        thead
+          tr
+            th 
+            th Линия
+            th Операция
+        tbody
+          - @calls.each_with_index do |call, index|
+            tr
+              td
+                span.margin-left-7px  = index + 1
+              td  
+                = call.raw
+              td    
+                = link_to drop_call_path(call) do
+                    span.glyphicon.glyphicon-earphone.margin-left-7px style="color: red; transform: rotate(180deg)"  
+

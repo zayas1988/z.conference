@@ -2,11 +2,13 @@
   .row
     .col-lg-12
       h3
-        = link_to "Телефоны господ", root_path()
-        |  > Поправить
+        = link_to "Конференции", conferences_path
+        |  > Редактировать
   .row
     .col-lg-12
-      = bootstrap_form_for @number do |f|
-        = f.collection_select :user_id, @users, :id, :name
+      = bootstrap_form_for @conference do |f|
         = f.text_field :num
-        = f.submit "Поправить"
+        = collection_check_boxes(:conference, :account_ids, Account.all, :id, :name)
+        = collection_check_boxes(:conference, :user_ids, User.all, :id, :name)
+        = f.submit "Изменить"
+

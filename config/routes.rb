@@ -11,6 +11,18 @@ Rails.application.routes.draw do
   resources :calls
   resources :accounts
   resources :conferences
+  resources :conferences do
+    member do
+      get :conf
+      post :conf
+    end
+    resources :users do
+      member do
+        post :call
+        get :call
+      end
+    end
+  end
   resources :calls do
     member do
       post :drop

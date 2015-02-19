@@ -2,16 +2,15 @@
   .row
     .col-lg-12
       h3
-        = link_to "Конференции господ", root_path()
-        |  > Новая конфа
+        = link_to "Конференции", conferences_path
+        |  > Новая
   .row
     .col-lg-12
       = bootstrap_form_for @conference do |f|
         = f.text_field :num
-	- for account in Account.all
-            = check_box_tag "conference[account_ids][]", account.id, @conference.account.include?(account)
+        - for account in Account.take(999)
+            = check_box_tag "conference[account_ids][]", account.id, @conference.accounts.include?(account)
             = account.name
             = f.label " "
-
-	= f.collection_select :user_id, @users, :id, :name
         = f.submit "Создать"
+

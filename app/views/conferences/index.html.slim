@@ -1,0 +1,31 @@
+.container
+  .row
+    .col-lg-12
+      h3  Conferences
+  .row
+    .col-lg-12
+      table.table.table-striped
+        thead
+          tr
+            th.col-md-1
+              = link_to new_conference_path do
+                span.glyphicon.glyphicon-plus.margin-left-7px
+            th  Номер конфы
+            th  Господа в конфе
+            th.col-md-1  &nbsp;
+        tbody
+          - @conferences.each_with_index do |conference, index|
+            tr
+              td
+                span.margin-left-7px  = index + 1
+              td  
+                = link_to conference.num, conf_conference_path(conference)
+                = link_to edit_conference_path(conference) do
+                  span.glyphicon.glyphicon-pencil.margin-left-7px
+                = link_to conference_path(conference), :method => :delete, :class => :confirm_delete do
+                  span.glyphicon.glyphicon-remove.margin-left-7px
+              
+              td 
+                - conference.users.each do |user|
+                  = user.name
+                  = " "
