@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'accounts/new'
 
  # get 'main/new'
-  
-  root to: 'main#index'
+#  match '/main', to: 'conferences#index'
+  root to: 'conferences#index'
   get 'users/new'
   resources :users
   resources :calls
