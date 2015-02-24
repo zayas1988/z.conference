@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   def set_session_account(account)
   	session[:account] = Marchal.dump(user)
   end
-  set_session_account(Account.new)
-  session_account.awesome = 'rad'
-  session_account.save!
+#  set_session_account(Account.new)
+#  session_account.awesome = 'rad'
+#  session_account.save!
   private
   def current_account
     @_current_account ||= session[:current_account_id] &&
